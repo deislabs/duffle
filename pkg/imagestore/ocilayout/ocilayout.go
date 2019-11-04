@@ -6,11 +6,10 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/deislabs/duffle/pkg/imagestore"
 	"github.com/pivotal/image-relocation/pkg/image"
 	"github.com/pivotal/image-relocation/pkg/registry"
 	"github.com/pivotal/image-relocation/pkg/registry/ggcr"
-
-	"github.com/deislabs/duffle/pkg/imagestore"
 )
 
 // ociLayout is an image store which stores images as an OCI image layout.
