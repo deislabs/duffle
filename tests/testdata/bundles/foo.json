@@ -40,5 +40,13 @@
             "path": "pquux",
             "env": "equux"
         }
+    },
+    "actions": {
+      "foo-action": {
+          "modifies": false
+      },
+      "bar-action": {
+          "modifies": false
+      }
     }
 }

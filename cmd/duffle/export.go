@@ -106,7 +106,6 @@ func (ex *exportCmd) setup() (string, loader.BundleLoader, error) {
 }
 
 func resolveBundleFilePath(bun, homePath string, bundleIsFile bool) (string, error) {
-
 	if bundleIsFile {
 		return bun, nil
 	}
