@@ -16,7 +16,7 @@ import (
 const bundleRemoveDesc = `Remove a bundle from the local storage.
 
 This removes a bundle from the local storage so that it will no longer be locally
-available. Bundles can be rebuilt with 'duffle build'.
+available. Bundles can be rebuilt and store in local storage with 'duffle build'.
 
 Ex. $ duffle bundle remove foo  # removes all versions of foo from local store
 
