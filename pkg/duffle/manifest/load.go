@@ -4,14 +4,17 @@ import (
 	"encoding/json"
 	"os"
 	"path/filepath"
+)
 
-	"github.com/cnabio/duffle/pkg/duffle"
+const (
+	// DuffleFilename is the default filename for Duffle application configuration.
+	DuffleFilename = "duffle"
 )
 
 // Load parses the named file into a manifest.
 func Load(name, dir string) (*Manifest, error) {
 	if name == "" {
-		name = duffle.DuffleFilename + ".json"
+		name = DuffleFilename + ".json"
 	}
 	f, err := os.Open(filepath.Join(dir, name))
 	if err != nil {

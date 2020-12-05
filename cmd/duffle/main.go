@@ -177,6 +177,9 @@ func loadRelMapping(relMap string) (string, error) {
 	return "", nil
 }
 
+// TODO
+//
+// remove from main
 func loadBundle(bundleFile string) (*bundle.Bundle, error) {
 	l := loader.NewLoader()
 

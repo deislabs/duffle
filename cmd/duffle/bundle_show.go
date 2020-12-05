@@ -4,7 +4,9 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/docker/go/canonical/json"
+	"github.com/cnabio/duffle/pkg/duffle"
+	"github.com/cnabio/duffle/pkg/duffle/home"
+
 	"github.com/spf13/cobra"
 )
 
@@ -27,8 +29,7 @@ func newBundleShowCmd(w io.Writer) *cobra.Command {
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			bsc.name = args[0]
-
-			return bsc.run()
+			return duffle.Show(bsc.w, home.Home(homePath()), bsc.name, bsc.raw)
 		},
 	}
 
@@ -50,29 +51,4 @@ func (bsc *bundleShowCmd) usage(bundleSubCommand bool) string {
 		$ duffle %s duffle/example:0.1.0
 
 `, commandName)
-}
-
-func (bsc *bundleShowCmd) run() error {
-	bundleFile, err := getBundleFilepath(bsc.name, homePath())
-	if err != nil {
-		return err
-	}
-
-	bun, err := loadBundle(bundleFile)
-	if err != nil {
-		return err
-	}
-
-	if bsc.raw {
-		_, err = bun.WriteTo(bsc.w)
-		return err
-	}
-
-	d, err := json.MarshalIndent(bun, " ", " ")
-	if err != nil {
-		return err
-	}
-	_, err = bsc.w.Write(d)
-
-	return err
 }
